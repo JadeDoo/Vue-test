@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-model</h1>
+    <hr>
+    <div id="app">
+        <p>原始信息：{{msg}}</p>
+        v-model:<input type="text" v-model="msg"><br>
+        .lazy:<input type="text" v-model.lazy="msg"><br>
+        .number:<input type="text" v-model.number="msg"><br>
+        .trim:<input type="text" v-model.trim="msg">
+        <hr>
+        <textarea name="" id="" cols="30" rows="10" v-model='msg'></textarea>
+        <hr>
+        <input type="checkbox" id="isTrue" v-model="isTrue">
+        <label for="isTrue">{{isTrue}}</label>
+        <hr>
+        <input type="checkbox" name="" id="jade" value="jade" v-model='names'>
+        <label for="jade">jade</label>
+        <input type="checkbox" name="" id="doo" value="doo" v-model='names'>
+        <label for="jade">doo</label>
+        <input type="checkbox" name="" id="king" value="king" v-model='names'>
+        <label for="jade">king</label>
+        <p>{{names}}</p>
+        <hr>
+        <input type="radio" id="one" value="男" v-model="sex">
+        <label for="one">男</label>
+        <input type="radio" id="two" value="女" v-model="sex">
+        <label for="one">女</label>
+        <p>你确定你是{{sex}}的？</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                msg:'1111111111',
+                isTrue:true,
+                names:[],
+                sex:''
+            }
+        })
+    </script>
+</body>
+</html>

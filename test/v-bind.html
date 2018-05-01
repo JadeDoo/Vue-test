@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-bind</h1>
+    <hr>
+    <div id="app">
+        <img v-bind:src="imgSrc" width="200px">
+        <hr>
+        <a :href="webUrl" target="_blank">绑定属性</a>
+        <hr>
+        <p :class="className">绑定class</p>
+        <p :class="{classA:isOk}">绑定class判断</p>
+        <hr>
+        <input type="checkbox" id="isOk" v-model="isOk">
+        <label for="isOk">isOk={{isOk}}</label>
+        <hr>
+        <div :class="[classA,classB]">aaa</div>
+        <hr>
+        <div :class="isOk?classA:classB">11111</div>
+        <hr>
+        <p :style="{color:red,fontSize:font}">11111</p>
+        <hr>
+        <p :style = "object">1111111</p>
+    </div>
+    <style>
+        .classA{
+            color: red;
+        }
+        .classB{
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+        }
+    </style>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                object:{
+                    fontSize:'50px',
+                    color:'#333'
+                },
+                red:'red',
+                font:'20px',
+                classA:'classA',
+                classB:'classB',
+                className:'classA',isOk:false,
+                webUrl:'http://www.baidu.com',
+                imgSrc:'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=271772109,4134352739&fm=27&gp=0.jpg'
+            }
+        })
+    </script>
+</body>
+</html>

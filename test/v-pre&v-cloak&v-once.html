@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if&v-else&v-show</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-if&v-else&v-show</h1>
+    <hr>
+    <div id="app">
+        <p v-pre>{{msg}}</p>
+        <div v-cloak>渲染完成才显示</div>
+        <div v-once>{{msg}}</div>
+        <div><input type="text" name="" id="" v-model="msg"></div>
+        <div>{{msg}}</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                msg:'1111111111'
+            }
+        })
+    </script>
+</body>
+</html>

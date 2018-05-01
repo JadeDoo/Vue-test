@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-on</h1>
+    <hr>
+    <div id="app">
+        <span>加减：</span><span v-text="count"></span><br>
+        <button v-on:click="add">add</button>
+        <button v-on:click="sub">sub</button>
+        <br>
+        <button @click="add">add</button>
+        <button @click="sub">sub</button>
+        <br>
+        <input type="text" @keyup.enter="enter" v-model="secondCound">
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                count:0
+            },
+            methods:{
+                add:function(){
+                    this.count++;
+                },
+                sub:function(){
+                    this.count--;
+                },
+                onEnter:function(){
+                    this.count=this.count+parseInt(this.secondCount)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

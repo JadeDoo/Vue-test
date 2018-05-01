@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue.directive</title>
+    <script src="../assets/js/vue.js"></script>
+    <script src="../assets/js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <h1>vue.directive 自定义指令</h1>
+    <hr>
+    <div id="app">
+        <div v-css = "color">{{num}}</div>
+        <!-- <div v-css = "color">{{num}}</div> -->
+        <button @click = 'add'>add</button>
+        <!-- <button onclick = 'unbind()'>unbind</button> -->
+    </div>
+    <script>
+        // Vue.directive('css',function(el,binding){
+        //     console.log(el);
+        //     // binding.name 指令名称
+        //     // binding.value 指令的值的值
+        //     // binding.rawname 指令的全称
+        //     // binding.expression 指令的值
+        //     console.log(binding);
+        //     // console.log(binding.name);
+        //     el.style = 'color:'+binding.value;
+        // })
+
+        // 自定义生命周期
+        function unbind(){
+            app.$destory()
+        }
+        Vue.directive('css',{
+            bind:function(el,binding){
+                console.log('第一次绑定时，初始化动作');
+                el.style = 'color:' + binding.value;
+            },
+            inserted:function(){
+                console.log('被绑定元素插入父节点是调用')
+            },
+            update:function(){
+                console.log('被绑定于元素所在的模板更新时调用，而无论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新')
+            },
+            componentUpdated:function(){
+                console.log('被绑定元素所在模板完成一次更新周期时调用')
+            },
+            unbind:function(){
+                console.log('解绑时调用')
+            }
+        })
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num:1,
+                color: 'red'
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                }
+               
+            }
+        })
+    </script>
+</body>
+</html>

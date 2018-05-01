@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>methods</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{count}}
+        <button @click = 'add(2,$event)'>add</button>
+        <button @click = 'down'>down</button>
+        <btn @click.native = 'add'></btn>
+    </div>
+    <script>
+        // 事件组件
+        var btn = {
+            template:`<button>我是组件add</button>`
+        }
+        var app =new Vue({
+            el:'#app',
+            data:{
+                count:1
+            },
+            components:{
+                "btn":btn
+            },
+            methods: {
+                add:function(num,$event){
+                    if(isNaN(num)==false){
+                        this.count += num;
+                    }else{
+                        this.count++
+                    };
+                    console.log($event);
+                },
+                down:function(){
+                    this.count--;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

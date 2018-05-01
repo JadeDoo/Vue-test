@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>component父子组件</title>
+</head>
+<body>
+    <h1>component父子组件</h1>
+    <hr>
+    <div id="app">
+      <parent></parent>
+    </div>
+ 
+    <script type="text/javascript">
+        var child = {
+            template:`<div>it is child component</div>`
+        }
+        var parent = {
+            template:`<div><p>it is parent component</p>
+                <child></child>
+            </div>`,
+            components:{
+                "child":child
+            }
+        }
+        var app=new Vue({
+            el:'#app',
+            data:{
+                sicuan:'sicuan'
+            },
+            components:{
+                "parent": parent
+            }
+        })
+    </script>
+</body>
+</html>

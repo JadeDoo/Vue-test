@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-3.1.1.min.js"></script>
+    <title>实例事件</title>
+</head>
+
+<body>
+    <h1>实例事件</h1>
+    <hr>
+    <div id="app">
+        <jade>
+            <span slot="url">{{jadedoo.url}}</span>
+            <span slot="name">{{jadedoo.name}}</span>
+            <span slot="skill">{{jadedoo.skill}}</span>
+        </jade>
+    </div>
+    <template id="temp">
+        <div>
+            <p>博客地址：<slot name='url'></slot></p>
+            <p>name：<slot name='name'></slot></p>
+            <p>技术：<slot name='skill'></slot></p>
+        
+        </div>
+        
+    </template>
+    <script type="text/javascript">
+    var jade = {
+        template:"#temp"
+    }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                jadedoo: {
+                    name: 'jadedoo',
+                    url: 'https://jadedoo.gihub.io',
+                    skill: '前端'
+                }
+
+            },
+            components: {
+                "jade":jade
+            }
+        });
+    </script>
+</body>
+
+</html>

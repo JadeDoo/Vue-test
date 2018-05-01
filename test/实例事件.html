@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-3.1.1.min.js"></script>
+    <title>实例事件</title>
+</head>
+<body>
+    <h1>实例事件</h1>
+    <hr>
+    <div id="app">
+        {{num}}
+        <button @click = 'add'>add</button>
+        
+    </div><button onclick = 'reduce()'>reduce</button>
+    <script type="text/javascript">
+        var app=new Vue({
+            el:'#app',
+            data:{
+                num:1
+            },
+            methods: {
+                add:function(){
+                    this.num++
+                }
+            }
+        });
+        app.$on('reduce',function(){
+            console.log('添加reduce');
+            this.num--;
+        })
+        function reduce(){
+            app.$emit('reduce')
+        }
+        // app.$once
+        // app.$off
+    </script>
+</body>
+</html>
